@@ -1,54 +1,67 @@
-/* Intelligence Terminal Theme */
+/* Global Styles */
 body { 
-    background-color: #050505; 
-    color: #00ff41; 
-    font-family: 'Courier New', Courier, monospace; 
+    background: #020617; 
+    color: #94a3b8; 
+    font-family: 'Segoe UI', Tahoma, sans-serif; 
     margin: 0; 
-    padding-top: 80px; 
+    padding-top: 70px; 
 }
 
+/* Navigation Bar */
 .navbar { 
-    background: #000; 
-    border-bottom: 2px solid #00ff41; 
+    background: rgba(2, 6, 23, 0.9); 
+    border-bottom: 1px solid #1e293b; 
     padding: 15px 30px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     position: fixed; 
-    top: 0; width: 100%; 
+    top: 0; 
+    width: 100%; 
     box-sizing: border-box; 
     z-index: 1000; 
-}
-
-.navbar b { 
-    letter-spacing: 5px; 
-    font-size: 20px;
-    text-shadow: 0 0 10px #00ff41;
+    backdrop-filter: blur(10px); 
 }
 
 .nav-links a { 
     margin-left: 20px; 
-    color: #004411; 
+    color: #64748b; 
     text-decoration: none; 
-    font-size: 12px; 
-    text-transform: uppercase;
+    font-size: 14px; 
+    font-weight: bold; 
+    transition: 0.3s; 
 }
 
-.nav-links a:hover, .nav-links a.active { 
-    color: #00ff41; 
+.nav-links a:hover { 
+    color: #3b82f6; 
 }
 
-.container { padding: 20px; max-width: 1200px; margin: auto; }
+/* Active Page Highlight */
+.active {
+    color: #3b82f6 !important;
+}
+
+/* Container & Layout */
+.container { 
+    padding: 20px; 
+    max-width: 1200px; 
+    margin: auto; 
+}
 
 #search { 
     width: 100%; 
-    padding: 15px; 
-    background: #000; 
-    border: 1px solid #004411; 
-    color: #00ff41; 
+    padding: 12px; 
+    background: #0f172a; 
+    border: 1px solid #1e293b; 
+    color: white; 
+    border-radius: 8px; 
     margin-bottom: 30px; 
     outline: none; 
-    font-family: 'Courier New', monospace;
+}
+
+#search:focus { 
+    border-color: #3b82f6; 
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); 
 }
 
 .grid { 
@@ -57,40 +70,67 @@ body {
     gap: 20px; 
 }
 
+/* Cyber Cards Design */
 .cyber-card { 
-    background: #0a0a0a; 
-    border: 1px solid #004411; 
+    background: rgba(15, 23, 42, 0.6); 
+    border: 1px solid #1e293b; 
+    border-radius: 12px; 
     padding: 20px; 
-    transition: 0.2s; 
-    display: flex;
-    flex-direction: column;
+    transition: 0.3s; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
 }
 
 .cyber-card:hover { 
-    border-color: #00ff41; 
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    border-color: #3b82f6; 
+    transform: translateY(-5px); 
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2); 
 }
 
 .tool-name { 
-    color: #fff; 
-    font-size: 16px; 
+    color: white; 
+    font-size: 18px; 
     font-weight: bold; 
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
+    margin: 0 0 10px 0; 
 }
 
-.tool-desc { font-size: 11px; color: #008822; margin-bottom: 15px; }
+.tool-desc { 
+    font-size: 13px; 
+    line-height: 1.5; 
+    margin-bottom: 15px; 
+}
 
+/* Buttons & Links */
 .tool-link { 
-    color: #00ff41; 
+    color: #3b82f6; 
     text-decoration: none; 
-    font-size: 10px; 
-    border: 1px solid #00ff41; 
-    padding: 5px; 
-    text-align: center;
-    text-transform: uppercase;
+    font-size: 12px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    border: 1px solid #3b82f6; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    align-self: flex-start; 
+    transition: 0.3s; 
 }
 
-.tool-link:hover { background: #00ff41; color: #000; }
+.tool-link:hover { 
+    background: #3b82f6; 
+    color: white; 
+}
 
-h2 { border-bottom: 1px solid #004411; color: #00ff41; font-size: 14px; letter-spacing: 3px; padding-bottom: 5px; margin-top: 40px; }
+/* Icon Spacing inside Buttons */
+.tool-link i {
+    margin-right: 5px;
+}
+
+/* Headers Style */
+h2 { 
+    border-left: 4px solid #3b82f6; 
+    padding-left: 15px; 
+    margin-top: 50px; 
+    color: #f8fafc; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
