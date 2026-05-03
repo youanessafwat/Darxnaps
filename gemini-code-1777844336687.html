@@ -3,100 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youanes Safwat | Security Dashboard</title>
+    <title>Youanes Safwat | Security Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #020617;
-            color: #94a3b8;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .cyber-grid {
-            background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
-                              linear-gradient(to bottom, #1e293b 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        .glow-border {
-            border: 1px solid #3b82f6;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-            transition: 0.3s;
-        }
-        .glow-border:hover {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
-            border-color: #60a5fa;
-        }
-        .terminal-text {
-            border-right: 2px solid #3b82f6;
-            animation: blink 0.7s infinite;
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        body { background-color: #020617; color: #94a3b8; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .cyber-border { border: 1px solid #1e293b; transition: 0.3s; }
+        .cyber-border:hover { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+        .sidebar-item { transition: 0.2s; border-left: 3px solid transparent; }
+        .sidebar-item:hover { background: #0f172a; border-left: 3px solid #3b82f6; color: #fff; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
     </style>
 </head>
-<body class="cyber-grid min-h-screen">
+<body class="flex h-screen overflow-hidden">
 
-    <div class="max-w-7xl mx-auto p-6">
-        <!-- TOP HEADER -->
-        <header class="flex justify-between items-center mb-12 border-b border-blue-900 pb-4">
-            <div>
-                <h1 class="text-2xl font-bold text-white tracking-widest">USER: <span class="text-blue-500 underline">YOUANES_SAFWAT</span></h1>
-                <p class="text-xs mt-1">SYSTEM STATUS: <span class="text-green-500 font-bold">OPERATIONAL</span></p>
-            </div>
-            <div class="text-right">
-                <p class="text-xs uppercase">Location: Sohag, EG</p>
-                <p class="text-xs text-blue-400">Project: CyberSharks Hub</p>
-            </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-72 bg-slate-900/50 border-r border-slate-800 flex flex-col">
+        <div class="p-6 border-b border-slate-800">
+            <h1 class="text-xl font-bold text-white tracking-tighter italic">CYBER<span class="text-blue-500">SHARKS</span></h1>
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Admin: Youanes Safwat</p>
+        </div>
+        
+        <nav class="flex-1 overflow-y-auto py-4 space-y-1">
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm text-blue-400 bg-blue-500/5 border-left-blue-500">
+                <i class="fas fa-tools mr-3"></i> Tools Reference
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-user-secret mr-3 text-slate-500"></i> OSINT Techniques
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-book-open mr-3 text-slate-500"></i> Bug Bounty Notes
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-bolt mr-3 text-slate-500"></i> Attack Workflows
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-scroll mr-3 text-slate-500"></i> Writeups & Cases
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-robot mr-3 text-slate-500"></i> Automation Scripts
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-check-double mr-3 text-slate-500"></i> Checklists
+            </a>
+            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
+                <i class="fas fa-brain mr-3 text-slate-500"></i> Hacker Strategy
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800 text-[10px] text-center uppercase tracking-widest">
+            System Status: <span class="text-green-500">Online</span>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto bg-[#020617] p-8 lg:p-12">
+        
+        <header class="mb-10">
+            <h2 class="text-3xl font-bold text-white mb-2">🛠️ Bug Bounty Tools Reference</h2>
+            <p class="text-slate-400 max-w-2xl text-sm italic">"A curated collection of essential tools for offensive security. Compiled by Youanes Safwat."</p>
         </header>
 
-        <!-- DASHBOARD GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- COLUMN 1: RECON -->
-            <div class="space-y-6">
-                <div class="glow-border bg-slate-900/80 p-5 rounded-lg">
-                    <h2 class="text-blue-400 font-bold mb-4 border-b border-blue-900 pb-2"><i class="fas fa-satellite mr-2"></i> RECON OPS</h2>
-                    <ul class="text-sm space-y-2">
-                        <li><a href="https://github.com/projectdiscovery/subfinder" class="hover:text-white">- Subfinder [Subdomain]</a></li>
-                        <li><a href="https://github.com/owasp-amass/amass" class="hover:text-white">- Amass [DNS]</a></li>
-                        <li><a href="https://github.com/tomnomnom/assetfinder" class="hover:text-white">- Assetfinder</a></li>
-                        <li><a href="https://github.com/projectdiscovery/httpx" class="hover:text-white text-blue-300">- HTTPX [Alive]</a></li>
-                    </ul>
-                </div>
+        <!-- SECTION: RECON -->
+        <section class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="h-px flex-1 bg-slate-800"></div>
+                <h3 class="mx-4 text-xs font-bold uppercase tracking-widest text-blue-500">1. Recon & Subdomains</h3>
+                <div class="h-px flex-1 bg-slate-800"></div>
             </div>
 
-            <!-- COLUMN 2: EXPLOITATION -->
-            <div class="space-y-6">
-                <div class="glow-border bg-slate-900/80 p-5 rounded-lg">
-                    <h2 class="text-red-400 font-bold mb-4 border-b border-red-900 pb-2"><i class="fas fa-skull-crossbones mr-2"></i> EXPLOIT TOOLS</h2>
-                    <ul class="text-sm space-y-2">
-                        <li><a href="https://github.com/projectdiscovery/nuclei" class="hover:text-white">- Nuclei [Scanners]</a></li>
-                        <li><a href="https://github.com/sqlmapproject/sqlmap" class="hover:text-white">- SQLMap [Database]</a></li>
-                        <li><a href="https://github.com/hahwul/dalfox" class="hover:text-white">- Dalfox [XSS]</a></li>
-                        <li><a href="https://github.com/ffuf/ffuf" class="hover:text-white text-red-300">- FFUF [Fuzzing]</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- COLUMN 3: SYSTEM INFO -->
-            <div class="space-y-6">
-                <div class="glow-border bg-blue-900/20 p-5 rounded-lg border-blue-500/50">
-                    <h2 class="text-white font-bold mb-4">TERMINAL_LOG</h2>
-                    <div class="text-[10px] font-mono space-y-1">
-                        <p>> Initializing modules...</p>
-                        <p>> Loading Bug Bounty Notes...</p>
-                        <p>> Connecting to CyberSharks...</p>
-                        <p class="text-green-400">> ACCESS GRANTED.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Tool Card -->
+                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-slate-200 group-hover:text-blue-400">Subfinder</h4>
+                        <a href="https://github.com/projectdiscovery/subfinder" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
                     </div>
+                    <p class="text-xs leading-relaxed">Fast passive subdomain enumeration using multiple sources.</p>
+                </div>
+                <!-- Tool Card -->
+                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-slate-200 group-hover:text-blue-400">Amass</h4>
+                        <a href="https://github.com/owasp-amass/amass" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                    </div>
+                    <p class="text-xs leading-relaxed">Advanced DNS enumeration (passive + active).</p>
+                </div>
+                <!-- Tool Card -->
+                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-slate-200 group-hover:text-blue-400">OneForAll</h4>
+                        <a href="https://github.com/shmilylty/OneForAll" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                    </div>
+                    <p class="text-xs leading-relaxed">Comprehensive scanner with multiple techniques.</p>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <!-- SECTION: VULN SCANNERS -->
+        <section class="mb-12">
+            <div class="flex items-center mb-6">
+                <div class="h-px flex-1 bg-slate-800"></div>
+                <h3 class="mx-4 text-xs font-bold uppercase tracking-widest text-red-500">4. Vulnerability Scanners</h3>
+                <div class="h-px flex-1 bg-slate-800"></div>
+            </div>
 
-        <!-- FOOTER -->
-        <footer class="mt-20 text-center text-[10px] tracking-[0.5em] text-slate-600">
-            &copy; 2026 YOUANES SAFWAT // OFFENSIVE SECURITY DIVISION
-        </footer>
-    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group border-l-2 border-l-red-900">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-slate-200 group-hover:text-red-400">Nuclei</h4>
+                        <a href="https://github.com/projectdiscovery/nuclei" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                    </div>
+                    <p class="text-xs leading-relaxed">Template-based vulnerability scanner for rapid assessment.</p>
+                </div>
+                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group border-l-2 border-l-red-900">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-slate-200 group-hover:text-red-400">SQLmap</h4>
+                        <a href="https://github.com/sqlmapproject/sqlmap" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                    </div>
+                    <p class="text-xs leading-relaxed">Automated SQL injection discovery and exploitation.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
 </body>
 </html>
