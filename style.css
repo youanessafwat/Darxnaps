@@ -1,136 +1,137 @@
-/* Global Styles */
-body { 
-    background: #020617; 
-    color: #94a3b8; 
-    font-family: 'Segoe UI', Tahoma, sans-serif; 
-    margin: 0; 
-    padding-top: 70px; 
+/* Intelligence Theme - Darxnaps */
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #111111;
+    --border-color: #1a1a1a;
+    --primary-green: #00ff41; /* Classic Terminal Green */
+    --dim-green: rgba(0, 255, 65, 0.15);
+    --warning-red: #ff3131;
+    --text-main: #d1d1d1;
+    --text-dim: #666666;
 }
 
-/* Navigation Bar */
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-main); 
+    font-family: 'Courier New', Courier, monospace; /* Terminal Font */
+    margin: 0; 
+    padding-top: 80px; 
+}
+
+/* Navbar - Forensic Style */
 .navbar { 
-    background: rgba(2, 6, 23, 0.9); 
-    border-bottom: 1px solid #1e293b; 
-    padding: 15px 30px; 
+    background: rgba(10, 10, 10, 0.95); 
+    border-bottom: 2px solid var(--primary-green); 
+    padding: 10px 40px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     position: fixed; 
-    top: 0; 
-    width: 100%; 
+    top: 0; width: 100%; 
     box-sizing: border-box; 
     z-index: 1000; 
-    backdrop-filter: blur(10px); 
+}
+
+.navbar b { 
+    color: var(--primary-green); 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 20px;
+    text-shadow: 0 0 10px var(--primary-green);
 }
 
 .nav-links a { 
-    margin-left: 20px; 
-    color: #64748b; 
+    margin-left: 25px; 
+    color: var(--text-dim); 
     text-decoration: none; 
-    font-size: 14px; 
-    font-weight: bold; 
+    font-size: 12px; 
+    text-transform: uppercase;
     transition: 0.3s; 
 }
 
-.nav-links a:hover { 
-    color: #3b82f6; 
+.nav-links a:hover, .nav-links a.active { 
+    color: var(--primary-green); 
 }
 
-/* Active Page Highlight */
-.active {
-    color: #3b82f6 !important;
-}
+/* Container */
+.container { padding: 30px; max-width: 1300px; margin: auto; }
 
-/* Container & Layout */
-.container { 
-    padding: 20px; 
-    max-width: 1200px; 
-    margin: auto; 
-}
-
+/* Search - Terminal Prompt Style */
 #search { 
     width: 100%; 
-    padding: 12px; 
-    background: #0f172a; 
-    border: 1px solid #1e293b; 
-    color: white; 
-    border-radius: 8px; 
-    margin-bottom: 30px; 
+    padding: 15px; 
+    background: #000; 
+    border: 1px solid var(--border-color); 
+    color: var(--primary-green); 
+    border-radius: 0; 
+    margin-bottom: 40px; 
     outline: none; 
+    font-family: 'Courier New', monospace;
 }
 
-#search:focus { 
-    border-color: #3b82f6; 
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); 
-}
+#search:focus { border-color: var(--primary-green); box-shadow: 0 0 15px var(--dim-green); }
 
-.grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 20px; 
-}
+/* Grid & Cards - Encrypted Box Style */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
 
-/* Cyber Cards Design */
 .cyber-card { 
-    background: rgba(15, 23, 42, 0.6); 
-    border: 1px solid #1e293b; 
-    border-radius: 12px; 
-    padding: 20px; 
-    transition: 0.3s; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    padding: 25px; 
+    position: relative;
+    transition: 0.2s; 
+    overflow: hidden;
+}
+
+/* Corner Accents - Intelligence Style */
+.cyber-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 10px; height: 10px;
+    border-top: 2px solid var(--primary-green); border-left: 2px solid var(--primary-green);
 }
 
 .cyber-card:hover { 
-    border-color: #3b82f6; 
-    transform: translateY(-5px); 
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2); 
+    border-color: var(--primary-green); 
+    background: #161616;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.05);
 }
 
 .tool-name { 
-    color: white; 
-    font-size: 18px; 
+    color: var(--primary-green); 
+    font-size: 16px; 
     font-weight: bold; 
-    margin: 0 0 10px 0; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
-.tool-desc { 
-    font-size: 13px; 
-    line-height: 1.5; 
-    margin-bottom: 15px; 
-}
+.tool-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
 
-/* Buttons & Links */
+/* Buttons - Command Style */
 .tool-link { 
-    color: #3b82f6; 
+    color: var(--primary-green); 
     text-decoration: none; 
-    font-size: 12px; 
+    font-size: 10px; 
     font-weight: bold; 
-    text-transform: uppercase; 
-    border: 1px solid #3b82f6; 
-    padding: 5px 10px; 
-    border-radius: 5px; 
-    align-self: flex-start; 
+    border: 1px solid var(--primary-green); 
+    padding: 6px 12px; 
+    margin-top: 15px;
+    display: inline-block;
     transition: 0.3s; 
 }
 
 .tool-link:hover { 
-    background: #3b82f6; 
-    color: white; 
+    background: var(--primary-green); 
+    color: #000; 
 }
 
-/* Icon Spacing inside Buttons */
-.tool-link i {
-    margin-right: 5px;
-}
-
-/* Headers Style */
+/* Section Headers */
 h2 { 
-    border-left: 4px solid #3b82f6; 
-    padding-left: 15px; 
-    margin-top: 50px; 
-    color: #f8fafc; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+    color: #fff; 
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color); 
+    padding-bottom: 10px;
+    margin-top: 60px; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
+
+h1 { font-size: 24px; color: #fff; letter-spacing: -1px; }
