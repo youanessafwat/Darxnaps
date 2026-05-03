@@ -3,130 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youanes Safwat | Security Hub</title>
+    <title>Darxnaps | Bug Bounty & OSINT Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { background-color: #020617; color: #94a3b8; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .cyber-border { border: 1px solid #1e293b; transition: 0.3s; }
-        .cyber-border:hover { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
-        .sidebar-item { transition: 0.2s; border-left: 3px solid transparent; }
+        .cyber-card { background: rgba(15, 23, 42, 0.5); border: 1px solid #1e293b; transition: 0.3s; }
+        .cyber-card:hover { border-color: #3b82f6; background: rgba(15, 23, 42, 0.8); transform: translateY(-2px); }
+        .sidebar-item { transition: 0.2s; border-left: 3px solid transparent; color: #64748b; }
         .sidebar-item:hover { background: #0f172a; border-left: 3px solid #3b82f6; color: #fff; }
+        .active-link { background: #0f172a; border-left: 3px solid #3b82f6; color: #3b82f6 !important; font-weight: bold; }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
 
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="w-72 bg-slate-900/50 border-r border-slate-800 flex flex-col">
+    <!-- SIDEBAR -->
+    <aside class="w-72 bg-slate-900/80 border-r border-slate-800 flex flex-col hidden lg:flex">
         <div class="p-6 border-b border-slate-800">
-            <h1 class="text-xl font-bold text-white tracking-tighter italic">CYBER<span class="text-blue-500">SHARKS</span></h1>
-            <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Admin: Youanes Safwat</p>
+            <h1 class="text-xl font-bold text-white tracking-tighter italic">DARX<span class="text-blue-500">NAPS</span></h1>
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Bug Bounty & OSINT Hub</p>
         </div>
         
         <nav class="flex-1 overflow-y-auto py-4 space-y-1">
-            <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm text-blue-400 bg-blue-500/5 border-left-blue-500">
+            <a href="#" class="sidebar-item active-link flex items-center px-6 py-3 text-sm">
                 <i class="fas fa-tools mr-3"></i> Tools Reference
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-user-secret mr-3 text-slate-500"></i> OSINT Techniques
+                <i class="fas fa-user-secret mr-3"></i> OSINT Techniques
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-book-open mr-3 text-slate-500"></i> Bug Bounty Notes
+                <i class="fas fa-book-open mr-3"></i> Bug Bounty Notes
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-bolt mr-3 text-slate-500"></i> Attack Workflows
+                <i class="fas fa-bolt mr-3"></i> Attack Workflows
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-scroll mr-3 text-slate-500"></i> Writeups & Cases
+                <i class="fas fa-scroll mr-3"></i> Writeups
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-robot mr-3 text-slate-500"></i> Automation Scripts
+                <i class="fas fa-robot mr-3"></i> Automation
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-check-double mr-3 text-slate-500"></i> Checklists
+                <i class="fas fa-check-double mr-3"></i> Checklists
             </a>
             <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm">
-                <i class="fas fa-brain mr-3 text-slate-500"></i> Hacker Strategy
+                <i class="fas fa-brain mr-3"></i> Strategy
             </a>
         </nav>
 
-        <div class="p-4 border-t border-slate-800 text-[10px] text-center uppercase tracking-widest">
-            System Status: <span class="text-green-500">Online</span>
+        <div class="p-4 border-t border-slate-800 text-[10px] text-center uppercase">
+            Admin: <span class="text-blue-400">Youanes Safwat</span>
         </div>
     </aside>
 
     <!-- MAIN CONTENT -->
-    <main class="flex-1 overflow-y-auto bg-[#020617] p-8 lg:p-12">
-        
+    <main class="flex-1 overflow-y-auto bg-[#020617] p-6 lg:p-12 relative">
+        <!-- Background Glow -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] -z-10"></div>
+
         <header class="mb-10">
-            <h2 class="text-3xl font-bold text-white mb-2">🛠️ Bug Bounty Tools Reference</h2>
-            <p class="text-slate-400 max-w-2xl text-sm italic">"A curated collection of essential tools for offensive security. Compiled by Youanes Safwat."</p>
+            <h2 class="text-3xl font-bold text-white mb-2 underline decoration-blue-500 decoration-4 underline-offset-8">🛠️ Bug Bounty Tools</h2>
+            <p class="text-slate-400 max-w-2xl text-sm mt-4 italic text-sm">A curated collection of essential tools used in bug bounty hunting and offensive security.</p>
         </header>
 
-        <!-- SECTION: RECON -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
+        <!-- SECTION 1: RECON -->
+        <div class="mb-10">
+            <h3 class="text-blue-500 font-bold uppercase text-xs tracking-widest mb-6 flex items-center">
+                <span class="mr-3">🛡️ 1. Recon & Subdomains</span>
                 <div class="h-px flex-1 bg-slate-800"></div>
-                <h3 class="mx-4 text-xs font-bold uppercase tracking-widest text-blue-500">1. Recon & Subdomains</h3>
-                <div class="h-px flex-1 bg-slate-800"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Tool Card -->
-                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-slate-200 group-hover:text-blue-400">Subfinder</h4>
-                        <a href="https://github.com/projectdiscovery/subfinder" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
-                    </div>
-                    <p class="text-xs leading-relaxed">Fast passive subdomain enumeration using multiple sources.</p>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div class="cyber-card p-5 rounded-lg">
+                    <h4 class="font-bold text-white mb-1">Subfinder</h4>
+                    <p class="text-xs text-slate-500 mb-3">Fast passive subdomain enumeration.</p>
+                    <a href="https://github.com/projectdiscovery/subfinder" target="_blank" class="text-[10px] text-blue-400 hover:underline">VIEW SOURCE <i class="fas fa-external-link-alt ml-1"></i></a>
                 </div>
-                <!-- Tool Card -->
-                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-slate-200 group-hover:text-blue-400">Amass</h4>
-                        <a href="https://github.com/owasp-amass/amass" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
-                    </div>
-                    <p class="text-xs leading-relaxed">Advanced DNS enumeration (passive + active).</p>
+                <div class="cyber-card p-5 rounded-lg">
+                    <h4 class="font-bold text-white mb-1">Amass</h4>
+                    <p class="text-xs text-slate-500 mb-3">Advanced DNS enumeration (passive + active).</p>
+                    <a href="https://github.com/owasp-amass/amass" target="_blank" class="text-[10px] text-blue-400 hover:underline">VIEW SOURCE <i class="fas fa-external-link-alt ml-1"></i></a>
                 </div>
-                <!-- Tool Card -->
-                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-slate-200 group-hover:text-blue-400">OneForAll</h4>
-                        <a href="https://github.com/shmilylty/OneForAll" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
-                    </div>
-                    <p class="text-xs leading-relaxed">Comprehensive scanner with multiple techniques.</p>
+                <div class="cyber-card p-5 rounded-lg">
+                    <h4 class="font-bold text-white mb-1">HTTPX</h4>
+                    <p class="text-xs text-slate-500 mb-3">Identify live hosts and tech stacks.</p>
+                    <a href="https://github.com/projectdiscovery/httpx" target="_blank" class="text-[10px] text-blue-400 hover:underline">VIEW SOURCE <i class="fas fa-external-link-alt ml-1"></i></a>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- SECTION: VULN SCANNERS -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
+        <!-- SECTION 2: SCANNERS -->
+        <div class="mb-10">
+            <h3 class="text-red-500 font-bold uppercase text-xs tracking-widest mb-6 flex items-center">
+                <span class="mr-3">💣 4. Vulnerability Scanners</span>
                 <div class="h-px flex-1 bg-slate-800"></div>
-                <h3 class="mx-4 text-xs font-bold uppercase tracking-widest text-red-500">4. Vulnerability Scanners</h3>
-                <div class="h-px flex-1 bg-slate-800"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group border-l-2 border-l-red-900">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-slate-200 group-hover:text-red-400">Nuclei</h4>
-                        <a href="https://github.com/projectdiscovery/nuclei" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
-                    </div>
-                    <p class="text-xs leading-relaxed">Template-based vulnerability scanner for rapid assessment.</p>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div class="cyber-card p-5 rounded-lg border-l-2 border-l-red-500">
+                    <h4 class="font-bold text-white mb-1">Nuclei</h4>
+                    <p class="text-xs text-slate-500 mb-3">Template-based vulnerability scanner.</p>
+                    <a href="https://github.com/projectdiscovery/nuclei" target="_blank" class="text-[10px] text-red-400 hover:underline">VIEW SOURCE <i class="fas fa-external-link-alt ml-1"></i></a>
                 </div>
-                <div class="cyber-border bg-slate-900/40 p-5 rounded-lg group border-l-2 border-l-red-900">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-slate-200 group-hover:text-red-400">SQLmap</h4>
-                        <a href="https://github.com/sqlmapproject/sqlmap" class="text-xs text-slate-500 hover:text-white"><i class="fab fa-github text-lg"></i></a>
-                    </div>
-                    <p class="text-xs leading-relaxed">Automated SQL injection discovery and exploitation.</p>
+                <div class="cyber-card p-5 rounded-lg border-l-2 border-l-red-500">
+                    <h4 class="font-bold text-white mb-1">SQLmap</h4>
+                    <p class="text-xs text-slate-500 mb-3">SQL Injection automation.</p>
+                    <a href="https://github.com/sqlmapproject/sqlmap" target="_blank" class="text-[10px] text-red-400 hover:underline">VIEW SOURCE <i class="fas fa-external-link-alt ml-1"></i></a>
                 </div>
             </div>
-        </section>
+        </div>
 
+        <footer class="mt-20 py-6 border-t border-slate-900 text-[10px] text-slate-600 tracking-widest text-center">
+            &copy; 2026 DARXNAPS OPERATIONS // DESIGNED BY YOUANES SAFWAT
+        </footer>
     </main>
 
 </body>
