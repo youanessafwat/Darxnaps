@@ -1,169 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>DARXNAPS | Tools Reference</title>
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darxnaps | Operational Security Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { background-color: #020617; color: #94a3b8; font-family: 'Segoe UI', Tahoma, sans-serif; scroll-behavior: smooth; padding-top: 60px; }
-        
-        /* Fixed Header Glassmorphism */
-        .fixed-header { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; z-index: 100; }
-
-        /* Enhanced Cyber Card */
-        .cyber-card {
-            background: linear-gradient(145deg, rgba(15,23,42,0.6), rgba(30,41,59,0.3));
-            border: 1px solid #1e293b;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 12px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .cyber-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
-        }
-
-        .category-header { position: sticky; top: 60px; background: #020617; z-index: 40; padding: 15px 0; border-bottom: 1px solid #1e293b; margin-bottom: 25px; }
-        
-        .sidebar-item { transition: 0.2s; border-left: 3px solid transparent; color: #64748b; }
-        .sidebar-item:hover, .sidebar-item.active { background: #0f172a; border-left: 3px solid #3b82f6; color: #fff; }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-        
-        .tool-link { font-size: 0.7rem; color: #3b82f6; font-weight: bold; transition: 0.3s; }
-        .tool-link:hover { color: #60a5fa; text-shadow: 0 0 8px #3b82f6; }
-    </style>
 </head>
-<body class="flex min-h-screen">
+<body>
 
-    <!-- FIXED TOP HEADER -->
-    <header class="fixed-header fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-3">
-        <div class="flex items-center gap-4">
-            <h1 class="text-white font-black tracking-tighter italic text-xl">DARX<span class="text-blue-500">NAPS</span></h1>
-            <nav class="hidden md:flex gap-4 text-[10px] uppercase font-bold tracking-widest ml-10">
-                <a href="index.html" class="text-blue-400 border-b border-blue-500">Tools</a>
-                <a href="osint.html" class="hover:text-white transition">OSINT</a>
-                <a href="notes.html" class="hover:text-white transition">Notes</a>
-                <a href="workflows.html" class="hover:text-white transition">Workflows</a>
-            </nav>
-        </div>
-        <div class="relative">
-            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-            <input type="text" id="toolSearch" placeholder="Search 100+ tools..." 
-                class="bg-slate-900 text-xs text-white px-8 py-2 rounded-full outline-none border border-slate-800 focus:border-blue-500 w-48 md:w-64 transition-all">
-        </div>
-    </header>
+<div class="navbar">
+    <b style="color:white; letter-spacing:2px;">DARXNAPS</b>
+    <div class="nav-links">
+        <a href="index.html" class="active">Tools</a>
+        <a href="osint.html">OSINT</a>
+        <a href="notes.html">Notes</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="writeups.html">Writeups</a>
+    </div>
+</div>
 
-    <!-- SIDEBAR (Desktop) -->
-    <aside class="w-64 bg-slate-900/50 border-r border-slate-800 hidden lg:flex flex-col fixed top-[60px] bottom-0">
-        <nav class="flex-1 overflow-y-auto py-6 space-y-1">
-            <p class="px-6 text-[9px] uppercase text-slate-500 font-bold mb-2 tracking-widest">Navigation</p>
-            <a href="#recon" class="sidebar-item active flex items-center px-6 py-3 text-xs"><i class="fas fa-satellite mr-3"></i> Recon & Discovery</a>
-            <a href="#fingerprint" class="sidebar-item flex items-center px-6 py-3 text-xs"><i class="fas fa-fingerprint mr-3"></i> Fingerprinting</a>
-            <a href="#scanners" class="sidebar-item flex items-center px-6 py-3 text-xs"><i class="fas fa-biohazard mr-3"></i> Vuln Scanners</a>
-            <a href="#fuzzing" class="sidebar-item flex items-center px-6 py-3 text-xs"><i class="fas fa-bolt mr-3"></i> Fuzzing & API</a>
-            <a href="#cloud" class="sidebar-item flex items-center px-6 py-3 text-xs"><i class="fas fa-cloud mr-3"></i> Cloud & Leaks</a>
-            <a href="#automation" class="sidebar-item flex items-center px-6 py-3 text-xs"><i class="fas fa-robot mr-3"></i> Automation</a>
-        </nav>
-        <div class="p-6 border-t border-slate-800 text-center">
-            <p class="text-[9px] text-slate-500">OPERATOR: YOUANES SAFWAT</p>
-        </div>
-    </aside>
+<div class="container">
+    <h1>🛠️ Bug Bounty Tools Reference</h1>
+    <input id="search" placeholder="Search across 100+ tools (e.g. recon, xss, cloud)...">
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 lg:ml-64 p-6 lg:p-10">
-        
-        <!-- Recommended Stack -->
-        <div class="mb-12 p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-            <h4 class="text-blue-500 text-[10px] font-black uppercase tracking-[0.2em] mb-2">🔥 Recommended Stack</h4>
-            <p class="text-xs font-mono text-slate-300 italic">Subfinder → HTTPX → Katana → FFUF → Nuclei</p>
-        </div>
+    <!-- 1. Recon & Subdomains -->
+    <h2>🛡️ 1. Recon & Subdomains</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">Subfinder</p><p class="tool-desc">Fast passive subdomain enumeration using multiple sources.</p><a class="tool-link" href="https://github.com/projectdiscovery/subfinder">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Amass</p><p class="tool-desc">Advanced DNS enumeration (passive + active).</p><a class="tool-link" href="https://github.com/owasp-amass/amass">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">OneForAll</p><p class="tool-desc">Comprehensive subdomain scanner with multiple techniques.</p><a class="tool-link" href="https://github.com/shmilylty/OneForAll">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Assetfinder</p><p class="tool-desc">Lightweight tool for discovering related domains.</p><a class="tool-link" href="https://github.com/tomnomnom/assetfinder">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Findomain</p><p class="tool-desc">High-speed subdomain discovery & monitoring.</p><a class="tool-link" href="https://github.com/Findomain/Findomain">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">PureDNS</p><p class="tool-desc">DNS bruteforcing with wildcard filtering.</p><a class="tool-link" href="https://github.com/d3mondev/puredns">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">MassDNS</p><p class="tool-desc">High-performance DNS resolver.</p><a class="tool-link" href="https://github.com/blechschmidt/massdns">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">AltDNS</p><p class="tool-desc">Generates subdomain permutations.</p><a class="tool-link" href="https://github.com/infosec-au/altdns">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Sublist3r</p><p class="tool-desc">OSINT-based subdomain discovery.</p><a class="tool-link" href="https://github.com/aboul3la/Sublist3r">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Chaos Client</p><p class="tool-desc">Access ProjectDiscovery datasets.</p><a class="tool-link" href="https://github.com/projectdiscovery/chaos-client">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Knockpy</p><p class="tool-desc">Subdomain bruteforce tool.</p><a class="tool-link" href="https://github.com/guelfoweb/knock">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">SubJS</p><p class="tool-desc">Extract JavaScript files from domains.</p><a class="tool-link" href="https://github.com/lc/subjs">GitHub</a></div>
+    </div>
 
-        <!-- 01. RECON SECTION -->
-        <section id="recon" class="mb-16 tool-section">
-            <div class="category-header">
-                <h3 class="text-blue-500 font-black uppercase text-sm tracking-widest italic">🛡️ 01. Recon & Subdomains</h3>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                <!-- Tool Template -->
-                <div class="cyber-card p-5">
-                    <div>
-                        <h4 class="text-white font-bold text-base">Subfinder</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Fast passive subdomain enumeration.</p>
-                        <p class="text-[10px] text-blue-400 mt-3 italic font-semibold">Use Case: Early recon phase without touching target.</p>
-                        <div class="flex gap-2 mt-3">
-                            <span class="px-2 py-0.5 bg-slate-800 text-[8px] text-purple-400 rounded">#Recon</span>
-                            <span class="px-2 py-0.5 bg-slate-800 text-[8px] text-purple-400 rounded">#Passive</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/projectdiscovery/subfinder" target="_blank" class="tool-link mt-4 block">🔗 GitHub Source</a>
-                </div>
-                <!-- Amass -->
-                <div class="cyber-card p-5">
-                    <div>
-                        <h4 class="text-white font-bold text-base">Amass</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Advanced DNS enumeration (passive + active).</p>
-                        <p class="text-[10px] text-blue-400 mt-3 italic font-semibold">Use Case: Deep asset mapping & graph analysis.</p>
-                        <div class="flex gap-2 mt-3">
-                            <span class="px-2 py-0.5 bg-slate-800 text-[8px] text-purple-400 rounded">#DNS</span>
-                            <span class="px-2 py-0.5 bg-slate-800 text-[8px] text-purple-400 rounded">#Discovery</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/owasp-amass/amass" target="_blank" class="tool-link mt-4 block">🔗 GitHub Source</a>
-                </div>
-            </div>
-        </section>
+    <!-- 2. Fingerprinting & Alive Hosts -->
+    <h2>⚡ 2. Fingerprinting & Alive Hosts</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">HTTPX</p><p class="tool-desc">Identify live hosts, titles, tech stack.</p><a class="tool-link" href="https://github.com/projectdiscovery/httpx">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Naabu</p><p class="tool-desc">Fast port scanning.</p><a class="tool-link" href="https://github.com/projectdiscovery/naabu">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Wappalyzer CLI</p><p class="tool-desc">Detect web technologies.</p><a class="tool-link" href="https://github.com/AliasIO/wappalyzer">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">TLSX</p><p class="tool-desc">TLS/SSL grabbing & analysis.</p><a class="tool-link" href="https://github.com/projectdiscovery/tlsx">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">FavFreak</p><p class="tool-desc">Identify assets via favicon hash.</p><a class="tool-link" href="https://github.com/devanshbatham/FavFreak">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">CloudEnumerator</p><p class="tool-desc">Discover cloud infrastructure.</p><a class="tool-link" href="https://github.com/initstring/cloud_enum">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">WhatWeb</p><p class="tool-desc">Website fingerprinting tool.</p><a class="tool-link" href="https://github.com/urbanadventurer/WhatWeb">GitHub</a></div>
+    </div>
 
-        <!-- 06. CLOUD SECTION -->
-        <section id="cloud" class="mb-16 tool-section">
-            <div class="category-header">
-                <h3 class="text-sky-400 font-black uppercase text-sm tracking-widest italic">☁️ 06. Cloud & Leaks</h3>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                <div class="cyber-card p-5">
-                    <div>
-                        <h4 class="text-white font-bold text-base">TruffleHog</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Find secrets in repositories and commit history.</p>
-                        <div class="flex gap-2 mt-3"><span class="px-2 py-0.5 bg-slate-800 text-[8px] text-purple-400 rounded">#Secrets</span></div>
-                    </div>
-                    <a href="https://github.com/trufflesecurity/trufflehog" class="tool-link mt-4 block">🔗 GitHub Source</a>
-                </div>
-                <div class="cyber-card p-5">
-                    <div>
-                        <h4 class="text-white font-bold text-base">S3Scanner</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Scan for open S3 buckets and permissions.</p>
-                        <div class="flex gap-2 mt-3"><span class="px-2 py-0.5 bg-slate-800 text-[8px] text-purple-400 rounded">#Cloud</span></div>
-                    </div>
-                    <a href="https://github.com/sa7mon/S3Scanner" class="tool-link mt-4 block">🔗 GitHub Source</a>
-                </div>
-            </div>
-        </section>
+    <!-- 3. Crawling & JS Analysis -->
+    <h2>🕸️ 3. Crawling & JS Analysis</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">Katana</p><p class="tool-desc">Modern crawling framework.</p><a class="tool-link" href="https://github.com/projectdiscovery/katana">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">GAU</p><p class="tool-desc">Collect URLs from public sources.</p><a class="tool-link" href="https://github.com/lc/gau">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Waybackurls</p><p class="tool-desc">Fetch archived URLs.</p><a class="tool-link" href="https://github.com/tomnomnom/waybackurls">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">LinkFinder</p><p class="tool-desc">Extract endpoints from JS.</p><a class="tool-link" href="https://github.com/GerbenJavado/LinkFinder">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">SecretFinder</p><p class="tool-desc">Detect secrets in JS files.</p><a class="tool-link" href="https://github.com/m4ll0k/SecretFinder">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">GoSpider</p><p class="tool-desc">Fast web spider.</p><a class="tool-link" href="https://github.com/jaeles-project/gospider">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Rad</p><p class="tool-desc">Fast web crawler by Chaitin.</p><a class="tool-link" href="https://github.com/chaitin/rad">GitHub</a></div>
+    </div>
 
-    </main>
+    <!-- 4. Vulnerability Scanners -->
+    <h2>💣 4. Vulnerability Scanners</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">Nuclei</p><p class="tool-desc">Template-based vulnerability scanner.</p><a class="tool-link" href="https://github.com/projectdiscovery/nuclei">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">SQLmap</p><p class="tool-desc">SQL Injection automation.</p><a class="tool-link" href="https://github.com/sqlmapproject/sqlmap">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Dalfox</p><p class="tool-desc">Advanced XSS scanner.</p><a class="tool-link" href="https://github.com/hahwul/dalfox">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">XSStrike</p><p class="tool-desc">Intelligent XSS detection.</p><a class="tool-link" href="https://github.com/s0md3v/XSStrike">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">SSTImap</p><p class="tool-desc">SSTI exploitation tool.</p><a class="tool-link" href="https://github.com/v0re/sstimap">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Commix</p><p class="tool-desc">Command injection testing.</p><a class="tool-link" href="https://github.com/commixproject/commix">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">CRLFuzz</p><p class="tool-desc">CRLF injection detection.</p><a class="tool-link" href="https://github.com/dwisiswant0/crlfuzz">GitHub</a></div>
+    </div>
 
-    <!-- SEARCH SCRIPT -->
-    <script>
-        document.getElementById("toolSearch").addEventListener("keyup", function() {
-            let value = this.value.toLowerCase();
-            document.querySelectorAll(".cyber-card").forEach(card => {
-                let text = card.innerText.toLowerCase();
-                card.style.display = text.includes(value) ? "flex" : "none";
-            });
-            
-            // Hide section headers if no tools are visible
-            document.querySelectorAll(".tool-section").forEach(section => {
-                let visibleCards = section.querySelectorAll('.cyber-card[style="display: flex;"]').length;
-                let noSearch = value === "";
-                section.style.display = (visibleCards > 0 || noSearch) ? "block" : "none";
-            });
-        });
-    </script>
+    <!-- 5. Fuzzing & API -->
+    <h2>⚡ 5. Fuzzing & API Discovery</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">FFUF</p><p class="tool-desc">Ultra-fast web fuzzer.</p><a class="tool-link" href="https://github.com/ffuf/ffuf">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Arjun</p><p class="tool-desc">HTTP parameter discovery.</p><a class="tool-link" href="https://github.com/s0md3v/Arjun">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Dirsearch</p><p class="tool-desc">Directory brute-force tool.</p><a class="tool-link" href="https://github.com/maurosoria/dirsearch">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Kiterunner</p><p class="tool-desc">API endpoint discovery.</p><a class="tool-link" href="https://github.com/assetnote/kiterunner">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">ParamSpider</p><p class="tool-desc">Mining parameters from archives.</p><a class="tool-link" href="https://github.com/devanshbatham/ParamSpider">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Feroxbuster</p><p class="tool-desc">Recursive content discovery.</p><a class="tool-link" href="https://github.com/epi052/feroxbuster">GitHub</a></div>
+    </div>
+
+    <!-- 6. Cloud & Secrets -->
+    <h2>🔐 6. Cloud & Leaked Secrets</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">TruffleHog</p><p class="tool-desc">Scan for secrets in repos.</p><a class="tool-link" href="https://github.com/trufflesecurity/trufflehog">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Gitleaks</p><p class="tool-desc">Detect secrets in commit history.</p><a class="tool-link" href="https://github.com/zricethezav/gitleaks">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">S3Scanner</p><p class="tool-desc">Scan for open S3 buckets.</p><a class="tool-link" href="https://github.com/sa7mon/S3Scanner">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">CloudBrute</p><p class="tool-desc">Find company assets on cloud.</p><a class="tool-link" href="https://github.com/0xsha/CloudBrute">GitHub</a></div>
+    </div>
+
+    <!-- 7. Mobile -->
+    <h2>📱 7. Mobile Bug Bounty</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">Frida</p><p class="tool-desc">Dynamic instrumentation toolkit.</p><a class="tool-link" href="https://github.com/frida/frida">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">MobSF</p><p class="tool-desc">Automated mobile app analysis.</p><a class="tool-link" href="https://github.com/MobSF/Mobile-Security-Framework-MobSF">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Objection</p><p class="tool-desc">Runtime mobile exploration.</p><a class="tool-link" href="https://github.com/sensepost/objection">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Apktool</p><p class="tool-desc">Reverse Android apps.</p><a class="tool-link" href="https://github.com/iBotPeaches/Apktool">GitHub</a></div>
+    </div>
+
+    <!-- 8. Automation -->
+    <h2>⚙️ 8. Automation & Workflow</h2>
+    <div class="grid">
+        <div class="cyber-card"><p class="tool-name">Reconftw</p><p class="tool-desc">Automated recon framework.</p><a class="tool-link" href="https://github.com/six2dez/reconftw">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Axiom</p><p class="tool-desc">Distributed infrastructure for bug bounty.</p><a class="tool-link" href="https://github.com/pry0cc/axiom">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Osmedeus</p><p class="tool-desc">Offensive automation framework.</p><a class="tool-link" href="https://github.com/j3ssie/osmedeus">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Notify</p><p class="tool-desc">Send notifications from your tools.</p><a class="tool-link" href="https://github.com/projectdiscovery/notify">GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Caido</p><p class="tool-desc">Web security testing platform (Burp alt).</p><a class="tool-link" href="https://github.com/caido/caido">GitHub</a></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
