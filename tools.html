@@ -3,90 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools Directory | DARXNAPS</title>
+    <title>Intel Tools | Darxnaps Premium</title>
     <style>
-        /* Modern & Cheerful Theme */
         :root {
-            --primary-blue: #0062ff;
-            --soft-blue: #f0f7ff;
-            --dark-navy: #0a192f;
-            --text-main: #2d3748;
-            --bg-light: #f8faff;
-            --white: #ffffff;
+            --apple-black: #000000;
+            --deep-grey: #121212;
+            --card-grey: #1c1c1e;
+            --accent-blue: #0071e3;
+            --text-silver: #f5f5f7;
+            --text-dim: #86868b;
         }
 
-        body { 
-            background-color: var(--bg-light); 
-            color: var(--text-main); 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
-            margin: 0; padding-top: 80px; 
+        body {
+            background-color: var(--apple-black);
+            color: var(--text-silver);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            margin: 0; padding-top: 80px; overflow-x: hidden;
         }
 
-        /* Fixed Navigation */
-        .navbar { 
-            background: rgba(255, 255, 255, 0.98); 
-            border-bottom: 1px solid #e2e8f0; 
-            padding: 15px 40px; display: flex; 
-            justify-content: space-between; align-items: center; 
-            position: fixed; top: 0; width: 100%; box-sizing: border-box; 
-            z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+            padding: 0 40px; height: 55px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; width: 100%; box-sizing: border-box; z-index: 9999;
         }
 
-        .navbar b { color: var(--dark-navy); font-size: 22px; letter-spacing: 1px; font-weight: 800; }
+        .navbar b { font-size: 19px; font-weight: 600; }
+        .nav-links a { margin-left: 25px; color: var(--text-dim); text-decoration: none; font-size: 12px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-silver); }
 
-        .nav-links a { 
-            margin-left: 25px; color: #718096; text-decoration: none; 
-            font-size: 14px; font-weight: 600; transition: 0.3s; 
+        .container { padding: 40px 20px; max-width: 1100px; margin: auto; }
+
+        .search-container { margin-bottom: 60px; text-align: center; }
+        #search {
+            width: 100%; max-width: 600px; padding: 18px 25px;
+            background: var(--card-grey); border: none; border-radius: 14px;
+            color: white; font-size: 17px; outline: none; transition: 0.3s;
         }
+        #search:focus { transform: scale(1.02); box-shadow: 0 0 20px rgba(0, 113, 227, 0.3); }
 
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+        h1 { font-size: 48px; font-weight: 700; text-align: center; margin-bottom: 10px; }
+        .subtitle { color: var(--text-dim); text-align: center; margin-bottom: 50px; font-size: 19px; }
 
-        .container { padding: 40px 20px; max-width: 1200px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
 
-        /* Modern Search Input */
-        #search { 
-            width: 100%; padding: 18px 25px; background: var(--white); 
-            border: 2px solid #edf2f7; border-radius: 15px; 
-            margin-bottom: 50px; outline: none; font-size: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s;
-        }
-        #search:focus { border-color: var(--primary-blue); box-shadow: 0 4px 20px rgba(0,98,255,0.08); }
-
-        /* Responsive Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-
-        /* Cheerful & Professional Cards */
-        .cyber-card { 
-            background: var(--white); border-radius: 20px; 
-            padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        .cyber-card {
+            background: var(--card-grey); border-radius: 22px; padding: 25px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex; flex-direction: column; justify-content: space-between;
-            border: 1px solid rgba(0,98,255,0.05);
+            border: 1px solid transparent; animation: fadeIn 0.8s ease backwards;
         }
 
-        .cyber-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 20px 40px rgba(0,98,255,0.12);
-            border-color: var(--primary-blue);
+        .cyber-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: #2c2c2e; border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
 
-        .tool-name { color: var(--dark-navy); font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+        .tool-name { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #fff; }
+        .tool-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; min-height: 40px; }
 
-        .tool-desc { font-size: 14px; color: #4a5568; line-height: 1.6; margin-bottom: 25px; min-height: 45px; }
-
-        /* Action Button */
-        .tool-link { 
-            background-color: var(--soft-blue); color: var(--primary-blue); 
-            text-decoration: none; font-size: 13px; font-weight: 700; 
-            padding: 12px 20px; border-radius: 10px; text-align: center;
-            transition: 0.3s;
+        .tool-link {
+            background-color: var(--text-silver); color: var(--apple-black);
+            text-decoration: none; font-size: 13px; font-weight: 600;
+            padding: 10px; border-radius: 12px; text-align: center; transition: 0.2s;
         }
+        .tool-link:hover { transform: scale(0.95); background: #ffffff; }
 
-        .tool-link:hover { background-color: var(--primary-blue); color: var(--white); }
+        h2 { font-size: 22px; margin-top: 60px; margin-bottom: 25px; border-left: 4px solid var(--accent-blue); padding-left: 15px; }
 
-        h1 { color: var(--dark-navy); font-size: 32px; font-weight: 900; margin-bottom: 40px; text-align: center; }
-        h2 { color: var(--dark-navy); font-size: 24px; margin-top: 80px; margin-bottom: 30px; display: flex; align-items: center; }
-        h2::before { content: ''; width: 6px; height: 30px; background: var(--primary-blue); border-radius: 10px; margin-right: 15px; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -102,124 +93,98 @@
 </div>
 
 <div class="container">
-    <h1>🚀 Offensive Intel Hub</h1>
-    <input id="search" placeholder="Search 100+ tools for bug bounty, recon, scanners...">
+    <h1>Offensive Intel.</h1>
+    <p class="subtitle">100+ Professional modules for elite hunters.</p>
+    
+    <div class="search-container">
+        <input id="search" placeholder="Search across 100+ modules...">
+    </div>
 
-    <!-- 01. RECON -->
-    <h2>🛡️ 1. Recon & Subdomains</h2>
+    <!-- 1. Recon -->
+    <h2>01. Recon & Subdomains</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">Subfinder</p><p class="tool-desc">Fast passive subdomain enumeration.</p><a class="tool-link" href="https://github.com/projectdiscovery/subfinder">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Amass</p><p class="tool-desc">Advanced DNS enumeration (passive + active).</p><a class="tool-link" href="https://github.com/owasp-amass/amass">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">OneForAll</p><p class="tool-desc">Comprehensive multi-technique scanner.</p><a class="tool-link" href="https://github.com/shmilylty/OneForAll">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Assetfinder</p><p class="tool-desc">Find related domains and assets.</p><a class="tool-link" href="https://github.com/tomnomnom/assetfinder">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Findomain</p><p class="tool-desc">High-speed monitoring & discovery.</p><a class="tool-link" href="https://github.com/Findomain/Findomain">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">PureDNS</p><p class="tool-desc">DNS bruteforce with wildcard filtering.</p><a class="tool-link" href="https://github.com/d3mondev/puredns">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">MassDNS</p><p class="tool-desc">High-performance DNS resolver.</p><a class="tool-link" href="https://github.com/blechschmidt/massdns">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">AltDNS</p><p class="tool-desc">Generate subdomain permutations.</p><a class="tool-link" href="https://github.com/infosec-au/altdns">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Knockpy</p><p class="tool-desc">Python-based subdomain bruteforcer.</p><a class="tool-link" href="https://github.com/guelfoweb/knock">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Sublist3r</p><p class="tool-desc">OSINT-based subdomain discovery.</p><a class="tool-link" href="https://github.com/aboul3la/Sublist3r">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Chaos Client</p><p class="tool-desc">Access ProjectDiscovery datasets.</p><a class="tool-link" href="https://github.com/projectdiscovery/chaos-client">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">SubJS</p><p class="tool-desc">Extract JavaScript files from domains.</p><a class="tool-link" href="https://github.com/lc/subjs">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Vita</p><p class="tool-desc">Subdomain intelligence gathering.</p><a class="tool-link" href="https://github.com/junnplus/vita">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Sudomy</p><p class="tool-desc">Automated recon toolset.</p><a class="tool-link" href="https://github.com/Screetsec/Sudomy">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Domains-CSP</p><p class="tool-desc">Extract domains from CSP headers.</p><a class="tool-link" href="https://github.com/lc/domains-from-csp">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Subfinder</p><p class="tool-desc">Fast passive subdomain enumeration tool.</p><a class="tool-link" href="https://github.com/projectdiscovery/subfinder">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Amass</p><p class="tool-desc">Advanced DNS enumeration and asset mapping.</p><a class="tool-link" href="https://github.com/owasp-amass/amass">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">OneForAll</p><p class="tool-desc">Comprehensive multi-technique subdomain scanner.</p><a class="tool-link" href="https://github.com/shmilylty/OneForAll">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Assetfinder</p><p class="tool-desc">Find related domains and subdomains.</p><a class="tool-link" href="https://github.com/tomnomnom/assetfinder">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Findomain</p><p class="tool-desc">Fastest subdomain monitoring tool.</p><a class="tool-link" href="https://github.com/Findomain/Findomain">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">PureDNS</p><p class="tool-desc">Fast DNS resolver and bruteforcing tool.</p><a class="tool-link" href="https://github.com/d3mondev/puredns">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">MassDNS</p><p class="tool-desc">High-performance DNS stub resolver.</p><a class="tool-link" href="https://github.com/blechschmidt/massdns">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">AltDNS</p><p class="tool-desc">Discovery through subdomain permutations.</p><a class="tool-link" href="https://github.com/infosec-au/altdns">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Knockpy</p><p class="tool-desc">Python tool for subdomain bruteforcing.</p><a class="tool-link" href="https://github.com/guelfoweb/knock">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Sublist3r</p><p class="tool-desc">Fast OSINT-based subdomain discovery.</p><a class="tool-link" href="https://github.com/aboul3la/Sublist3r">Get Module</a></div>
     </div>
 
     <!-- 2. Fingerprinting -->
-    <h2>⚡ 2. Fingerprinting & Alive Hosts</h2>
+    <h2>02. Fingerprinting & Alive</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">HTTPX</p><p class="tool-desc">Live host, title, & tech stack finder.</p><a class="tool-link" href="https://github.com/projectdiscovery/httpx">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Naabu</p><p class="tool-desc">Fast and simple port scanner.</p><a class="tool-link" href="https://github.com/projectdiscovery/naabu">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Wappalyzer</p><p class="tool-desc">Technology profiler for websites.</p><a class="tool-link" href="https://github.com/AliasIO/wappalyzer">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">WhatWeb</p><p class="tool-desc">Advanced website fingerprinter.</p><a class="tool-link" href="https://github.com/urbanadventurer/WhatWeb">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Finger</p><p class="tool-desc">Advanced technology fingerprinting.</p><a class="tool-link" href="https://github.com/Eminem-5/Finger">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">FavFreak</p><p class="tool-desc">Hash-based favicon discovery.</p><a class="tool-link" href="https://github.com/devanshbatham/FavFreak">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">TLSX</p><p class="tool-desc">TLS/SSL analysis & grabbing.</p><a class="tool-link" href="https://github.com/projectdiscovery/tlsx">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Cdncheck</p><p class="tool-desc">Identify CDN infrastructure.</p><a class="tool-link" href="https://github.com/projectdiscovery/cdncheck">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">CloudEnumerator</p><p class="tool-desc">Explore public cloud assets.</p><a class="tool-link" href="https://github.com/initstring/cloud_enum">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">HTTPX</p><p class="tool-desc">Fast and multi-purpose HTTP toolkit.</p><a class="tool-link" href="https://github.com/projectdiscovery/httpx">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Naabu</p><p class="tool-desc">A fast port scanner written in Go.</p><a class="tool-link" href="https://github.com/projectdiscovery/naabu">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Wappalyzer</p><p class="tool-desc">Identify technology on websites.</p><a class="tool-link" href="https://github.com/AliasIO/wappalyzer">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">WhatWeb</p><p class="tool-desc">Next-gen website fingerprinter.</p><a class="tool-link" href="https://github.com/urbanadventurer/WhatWeb">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">FavFreak</p><p class="tool-desc">Find assets via favicon hashes.</p><a class="tool-link" href="https://github.com/devanshbatham/FavFreak">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">TLSX</p><p class="tool-desc">Fast TLS analysis and grabbing.</p><a class="tool-link" href="https://github.com/projectdiscovery/tlsx">Get Module</a></div>
     </div>
 
     <!-- 3. Crawling -->
-    <h2>🕸️ 3. Crawling & JS Analysis</h2>
+    <h2>03. Crawling & JS</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">Katana</p><p class="tool-desc">Next-gen crawling framework.</p><a class="tool-link" href="https://github.com/projectdiscovery/katana">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Rad</p><p class="tool-desc">Chaitin's high-speed web crawler.</p><a class="tool-link" href="https://github.com/chaitin/rad">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Hakrawler</p><p class="tool-desc">Simple & fast endpoint discovery.</p><a class="tool-link" href="https://github.com/hakluke/hakrawler">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">GoSpider</p><p class="tool-desc">Fast web spidering in Go.</p><a class="tool-link" href="https://github.com/jaeles-project/gospider">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">GAU</p><p class="tool-desc">Get URLs from public archives.</p><a class="tool-link" href="https://github.com/lc/gau">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Waybackurls</p><p class="tool-desc">Fetch archived URLs instantly.</p><a class="tool-link" href="https://github.com/tomnomnom/waybackurls">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">LinkFinder</p><p class="tool-desc">Find endpoints in JS files.</p><a class="tool-link" href="https://github.com/GerbenJavado/LinkFinder">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">SecretFinder</p><p class="tool-desc">Discover secrets & API keys in JS.</p><a class="tool-link" href="https://github.com/m4ll0k/SecretFinder">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">XnLinkFinder</p><p class="tool-desc">Massive link extraction tool.</p><a class="tool-link" href="https://github.com/xnl-h4ck3r/xnLinkFinder">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">URLFinder</p><p class="tool-desc">Passive URL discovery & extraction.</p><a class="tool-link" href="https://github.com/pingc0y/URLFinder">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">GetJS</p><p class="tool-desc">Download all JS files from a list.</p><a class="tool-link" href="https://github.com/0xrawsec/getjs">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Katana</p><p class="tool-desc">Modern web crawling framework.</p><a class="tool-link" href="https://github.com/projectdiscovery/katana">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Rad</p><p class="tool-desc">Chaitin's powerful web crawler.</p><a class="tool-link" href="https://github.com/chaitin/rad">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Hakrawler</p><p class="tool-desc">Simple and fast web crawler.</p><a class="tool-link" href="https://github.com/hakluke/hakrawler">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">GoSpider</p><p class="tool-desc">Fast web spider for endpoint discovery.</p><a class="tool-link" href="https://github.com/jaeles-project/gospider">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">GAU</p><p class="tool-desc">Get all URLs from public archives.</p><a class="tool-link" href="https://github.com/lc/gau">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">LinkFinder</p><p class="tool-desc">Find endpoints in JS files.</p><a class="tool-link" href="https://github.com/GerbenJavado/LinkFinder">Get Module</a></div>
     </div>
 
     <!-- 4. Scanners -->
-    <h2>💣 4. Vulnerability Scanners</h2>
+    <h2>04. Vulnerability Scanners</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">Nuclei</p><p class="tool-desc">Template-based automation scanner.</p><a class="tool-link" href="https://github.com/projectdiscovery/nuclei">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">SQLmap</p><p class="tool-desc">SQL Injection automation king.</p><a class="tool-link" href="https://github.com/sqlmapproject/sqlmap">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Dalfox</p><p class="tool-desc">Advanced parameter & XSS scanner.</p><a class="tool-link" href="https://github.com/hahwul/dalfox">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">XSStrike</p><p class="tool-desc">Intelligent XSS exploitation tool.</p><a class="tool-link" href="https://github.com/s0md3v/XSStrike">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Commix</p><p class="tool-desc">Command Injection tester.</p><a class="tool-link" href="https://github.com/commixproject/commix">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">SSTImap</p><p class="tool-desc">SSTI exploitation framework.</p><a class="tool-link" href="https://github.com/v0re/sstimap">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Smugglefuzz</p><p class="tool-desc">HTTP Smuggling discovery tool.</p><a class="tool-link" href="https://github.com/moeinfatehi/smugglefuzz">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">CRLFuzz</p><p class="tool-desc">Fast CRLF injection scanner.</p><a class="tool-link" href="https://github.com/dwisiswant0/crlfuzz">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Corsy</p><p class="tool-desc">CORS misconfiguration scanner.</p><a class="tool-link" href="https://github.com/s0md3v/Corsy">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Bypass-403</p><p class="tool-desc">Scripts to bypass 403 Forbidden.</p><a class="tool-link" href="https://github.com/iamj0ker/bypass-403">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">NoSQLMap</p><p class="tool-desc">Automated NoSQL injection tool.</p><a class="tool-link" href="https://github.com/codingo/NoSQLMap">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Tplmap</p><p class="tool-desc">Server-Side Template Injection scanner.</p><a class="tool-link" href="https://github.com/epinna/tplmap">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Nuclei</p><p class="tool-desc">Template-based powerful vuln scanner.</p><a class="tool-link" href="https://github.com/projectdiscovery/nuclei">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">SQLmap</p><p class="tool-desc">Automatic SQL injection automation tool.</p><a class="tool-link" href="https://github.com/sqlmapproject/sqlmap">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Dalfox</p><p class="tool-desc">Advanced parameter analysis & XSS scanner.</p><a class="tool-link" href="https://github.com/hahwul/dalfox">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">XSStrike</p><p class="tool-desc">Intelligent XSS detection and suite.</p><a class="tool-link" href="https://github.com/s0md3v/XSStrike">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Commix</p><p class="tool-desc">Command Injection tester.</p><a class="tool-link" href="https://github.com/commixproject/commix">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">SSTImap</p><p class="tool-desc">SSTI exploitation framework.</p><a class="tool-link" href="https://github.com/v0re/sstimap">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Smugglefuzz</p><p class="tool-desc">HTTP Smuggling discovery tool.</p><a class="tool-link" href="https://github.com/moeinfatehi/smugglefuzz">Get Module</a></div>
     </div>
 
     <!-- 5. Fuzzing -->
-    <h2>⚡ 5. Fuzzing & API Discovery</h2>
+    <h2>05. Fuzzing & API</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">FFUF</p><p class="tool-desc">Ultra-fast web fuzzer in Go.</p><a class="tool-link" href="https://github.com/ffuf/ffuf">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Dirsearch</p><p class="tool-desc">Path brute-force tool.</p><a class="tool-link" href="https://github.com/maurosoria/dirsearch">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Arjun</p><p class="tool-desc">Parameter discovery engine.</p><a class="tool-link" href="https://github.com/s0md3v/Arjun">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Kiterunner</p><p class="tool-desc">API endpoint discovery.</p><a class="tool-link" href="https://github.com/assetnote/kiterunner">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">ParamSpider</p><p class="tool-desc">Extract params from archives.</p><a class="tool-link" href="https://github.com/devanshbatham/ParamSpider">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Feroxbuster</p><p class="tool-desc">Recursive content discovery.</p><a class="tool-link" href="https://github.com/epi052/feroxbuster">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Gobuster</p><p class="tool-desc">URIs & DNS brute-forcer.</p><a class="tool-link" href="https://github.com/OJ/gobuster">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Unfurl</p><p class="tool-desc">URL parsing & manipulation.</p><a class="tool-link" href="https://github.com/tomnomnom/unfurl">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Anew</p><p class="tool-desc">Unique line deduplicator.</p><a class="tool-link" href="https://github.com/tomnomnom/anew">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">FFUF</p><p class="tool-desc">Fast web fuzzer written in Go.</p><a class="tool-link" href="https://github.com/ffuf/ffuf">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Dirsearch</p><p class="tool-desc">Web path brute-force tool.</p><a class="tool-link" href="https://github.com/maurosoria/dirsearch">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Arjun</p><p class="tool-desc">HTTP parameter discovery engine.</p><a class="tool-link" href="https://github.com/s0md3v/Arjun">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Kiterunner</p><p class="tool-desc">API endpoint discovery tool.</p><a class="tool-link" href="https://github.com/assetnote/kiterunner">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Anew</p><p class="tool-desc">Append unique lines to files.</p><a class="tool-link" href="https://github.com/tomnomnom/anew">Get Module</a></div>
     </div>
 
     <!-- 6. Secrets -->
-    <h2>🔐 6. Leaks & Cloud Secrets</h2>
+    <h2>06. Leaks & Cloud</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">TruffleHog</p><p class="tool-desc">Scan repos for secrets & keys.</p><a class="tool-link" href="https://github.com/trufflesecurity/trufflehog">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Gitleaks</p><p class="tool-desc">Detect secrets in git history.</p><a class="tool-link" href="https://github.com/zricethezav/gitleaks">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">S3Scanner</p><p class="tool-desc">Scan for open S3 buckets.</p><a class="tool-link" href="https://github.com/sa7mon/S3Scanner">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">GitDorker</p><p class="tool-desc">Automated GitHub dorking tool.</p><a class="tool-link" href="https://github.com/obheda12/GitDorker">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">CloudBrute</p><p class="tool-desc">Find company assets on cloud.</p><a class="tool-link" href="https://github.com/0xsha/CloudBrute">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">TruffleHog</p><p class="tool-desc">Scan repos for secrets and keys.</p><a class="tool-link" href="https://github.com/trufflesecurity/trufflehog">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Gitleaks</p><p class="tool-desc">Detect secrets in git history.</p><a class="tool-link" href="https://github.com/zricethezav/gitleaks">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">S3Scanner</p><p class="tool-desc">Scan for open S3 buckets.</p><a class="tool-link" href="https://github.com/sa7mon/S3Scanner">Get Module</a></div>
     </div>
 
     <!-- 7. Mobile -->
-    <h2>📱 7. Mobile Bug Bounty</h2>
+    <h2>07. Mobile Bounty</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">Frida</p><p class="tool-desc">Dynamic instrumentation toolkit.</p><a class="tool-link" href="https://github.com/frida/frida">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">MobSF</p><p class="tool-desc">Static & dynamic mobile analyzer.</p><a class="tool-link" href="https://github.com/MobSF/Mobile-Security-Framework-MobSF">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Objection</p><p class="tool-desc">Runtime mobile exploration.</p><a class="tool-link" href="https://github.com/sensepost/objection">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Apktool</p><p class="tool-desc">Reverse engineering Android apps.</p><a class="tool-link" href="https://github.com/iBotPeaches/Apktool">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">JADX</p><p class="tool-desc">Dex to Java decompiler.</p><a class="tool-link" href="https://github.com/skylot/jadx">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Frida</p><p class="tool-desc">Dynamic instrumentation toolkit.</p><a class="tool-link" href="https://github.com/frida/frida">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">MobSF</p><p class="tool-desc">Automated mobile app analysis.</p><a class="tool-link" href="https://github.com/MobSF/Mobile-Security-Framework-MobSF">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">JADX</p><p class="tool-desc">Dex to Java decompiler.</p><a class="tool-link" href="https://github.com/skylot/jadx">Get Module</a></div>
     </div>
 
     <!-- 8. Automation -->
-    <h2>⚙️ 8. Automation & Workflow</h2>
+    <h2>08. Automation</h2>
     <div class="grid">
-        <div class="cyber-card"><p class="tool-name">Reconftw</p><p class="tool-desc">Complete recon automation framework.</p><a class="tool-link" href="https://github.com/six2dez/reconftw">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Axiom</p><p class="tool-desc">Distributed infrastructure for tools.</p><a class="tool-link" href="https://github.com/pry0cc/axiom">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Osmedeus</p><p class="tool-desc">Offensive security automation engine.</p><a class="tool-link" href="https://github.com/j3ssie/osmedeus">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Sn1per</p><p class="tool-desc">Automated pentest framework.</p><a class="tool-link" href="https://github.com/1N3/Sn1per">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Notify</p><p class="tool-desc">Tool communication & alerting.</p><a class="tool-link" href="https://github.com/projectdiscovery/notify">View GitHub</a></div>
-        <div class="cyber-card"><p class="tool-name">Caido</p><p class="tool-desc">Modern proxy & testing platform.</p><a class="tool-link" href="https://github.com/caido/caido">View GitHub</a></div>
+        <div class="cyber-card"><p class="tool-name">Reconftw</p><p class="tool-desc">Complete recon automation framework.</p><a class="tool-link" href="https://github.com/six2dez/reconftw">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Axiom</p><p class="tool-desc">Distributed infrastructure for tools.</p><a class="tool-link" href="https://github.com/pry0cc/axiom">Get Module</a></div>
+        <div class="cyber-card"><p class="tool-name">Caido</p><p class="tool-desc">Modern proxy & testing platform.</p><a class="tool-link" href="https://github.com/caido/caido">Get Module</a></div>
     </div>
 </div>
 
 <script>
-    // Live Search Functionality
     document.getElementById("search").addEventListener("keyup", () => {
         let val = document.getElementById("search").value.toLowerCase();
         document.querySelectorAll(".cyber-card").forEach(card => {
